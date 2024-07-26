@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,address=no" />
     <link rel="canonical" href="" />
-    <link rel="icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="icon.png" />
 
     <!-- Import Google Fonts -->
@@ -75,7 +74,25 @@
           prominent resorts.
         </p>
         <div class="column-2 my-midium">
-          <img src="./common/images/images01.webp" alt="" />
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./common/images/images01.webp" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./common/images/images02.webp" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./common/images/images03.webp" alt="" />
+              </div>
+
+              <div class="swiper-slide">
+                <img src="./common/images/images04.webp" alt="" />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
           <div class="evenly_space">
             <h6>Exceptional Snow Quality</h6>
             <p>
@@ -223,7 +240,25 @@
           </div>
           <div class="tab-panel panel-b" role="tabpanel">
             <div class="column-2">
-              <img src="./common/images/tomamu.webp" />
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="./common/images/tomamu.webp" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./common/images/images05.webp" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./common/images/images06.webp" alt="" />
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="./common/images/kirinoyu.webp" alt="" />
+                  </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
               <div>
                 <h6>Hoshino Resorts TOMAMU</h6>
                 <p>
@@ -529,7 +564,38 @@
           <a href="#reservation">BOOK NOW</a>
         </div>
       </section>
+      <div>
+        <p>Simulation</p>
+        <form
+          id="simulation"
+          style="display: flex; flex-direction: column; gap: 8px"
+        >
+          <label for="members">7 years and older</label>
+          <select name="members" id="members">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
 
+          <label for="members">6 years and younger</label>
+          <select name="young_members" id="young_members">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <label for="start_date">start_Date</label>
+          <input type="date" id="start_date" name="start_date" />
+
+          <label for="end_date">end_date</label>
+          <input type="date" id="end_date" name="end_date" />
+          <p id="simulation_price"></p>
+          <p id="simulation_msg"></p>
+        </form>
+      </div>
       <section>
         <h3 class="my-midium">Hokkaido Powder Belt Recommendations MAP</h3>
         <iframe
@@ -771,22 +837,20 @@
         <div class="tab-panel panel-j" role="tabpanel">
           <h6>Bathing facilities</h6>
           <div class="column-2">
-            <div>
-              <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="./common/images/kirinoyu.webp" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="./common/images/shisainoyu.webp" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="./common/images/plateau_sauna.webp" />
-                  </div>
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="./common/images/kirinoyu.webp" />
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-slide">
+                  <img src="./common/images/shisainoyu.webp" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./common/images/plateau_sauna.webp" />
+                </div>
               </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
             <div class="flex-column">
               <h6>Kirin-no Yu</h6>
@@ -1076,6 +1140,7 @@
           <p>
             4.<span>Receive Confirmation</span> You will receive an email
             confirmation with all your booking details and further instructions
+            <br />
           </p>
           <h6>Why Book with Us? :</h6>
           <p>
@@ -1287,7 +1352,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
     <script>
-      var swiper = new Swiper(".mySwiper", {
+      var swiper = new Swiper(".swiper", {
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -1319,6 +1384,43 @@
             console.error("Error:", error);
             alert("There was a problem with your reservation.");
           }
+        });
+
+      document
+        .getElementById("simulation")
+        .addEventListener("change", function (e) {
+          e.preventDefault();
+
+          document.getElementById("simulation_price").innerHTML = "";
+          const err_msg = document.getElementById("simulation_msg");
+
+          const form = document.getElementById("simulation");
+          const formData = new FormData(form);
+
+          const start_date = new Date(formData.get("start_date"));
+          const end_date = new Date(formData.get("end_date"));
+          const members = formData.get("members");
+
+          const date_difference =
+            (end_date - start_date) / (1000 * 60 * 60 * 24);
+
+          if (isNaN(start_date) || isNaN(end_date)) {
+            err_msg.innerText = "Please select date";
+            return;
+          }
+
+          if (date_difference <= 5) {
+            err_msg.innerText = "Please select a period of more than 5 days";
+            return;
+          }
+
+          const addtional_days = date_difference - 5;
+          const basic_price = members * 68000;
+          const addtional_price = members * addtional_days * 15000;
+          const price = addtional_price + basic_price;
+
+          document.getElementById("simulation_price").innerHTML = "¥" + price;
+          err_msg.innerText = "";
         });
     </script>
   </body>

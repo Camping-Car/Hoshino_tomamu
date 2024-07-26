@@ -212,9 +212,6 @@ th {
 #tab-n:checked ~ .panel-n {
   display: block;
 }
-.tab-panel div {
-  justify-content: center;
-}
 
 .flex-column {
   display: flex;
@@ -225,11 +222,6 @@ th {
   margin: 24px 0px;
 }
 
-.swiper {
-  width: 500px;
-  height: 400px !important;
-}
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -237,13 +229,6 @@ th {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .faq {
