@@ -158,14 +158,7 @@
             class="tab-input"
             value="maker"
           />
-          <input
-            id="tab-e"
-            type="radio"
-            role="tab"
-            name="tab-radio"
-            class="tab-input"
-            value="maker"
-          />
+
           <div class="label-wrapper">
             <h2 class="tab-label-heading selected">
               <label class="tab-label" for="tab-a">Overview</label>
@@ -185,9 +178,6 @@
               <label class="tab-label" for="tab-d"
                 >Schedule & Customization</label
               >
-            </h2>
-            <h2 class="tab-label-heading">
-              <label class="tab-label" for="tab-e">Pricing</label>
             </h2>
           </div>
           <div class="tab-panel panel-a" role="tabpanel">
@@ -428,76 +418,51 @@
               <a href="#reservation">BOOK NOW</a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="tab-panel panel-e" role="tabpanel">
-            <div class="column-2">
-              <div>
-                <ul>
-                  <li>
-                    5-Day Package:
-                    <ul>
-                      <li>
-                        <span>19 years and older</span>: ¥68,000 (tax included)
-                      </li>
-                      <li>
-                        <span>18 years and younger</span>: ¥55,000 (tax
-                        included)
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    Additional Days:
-                    <ul>
-                      <li><span>19 years and older</span>: ¥15,000 per day</li>
-                      <li><span>18 years and younger</span>:¥10,000 per day</li>
-                    </ul>
-                  </li>
-                </ul>
-                <p>※​Free for children under 6 years old</p>
-              </div>
-              <div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Days</th>
-                      <th>19 Years and Older</th>
-                      <th>18 Years and Younger</th>
-                    </tr>
-                  </thead>
-                  <tr>
-                    <td>5Days</td>
-                    <td>¥68,000</td>
-                    <td>¥55,000</td>
-                  </tr>
-                  <tr>
-                    <td>6Days</td>
-                    <td>¥83,000</td>
-                    <td>¥65,000</td>
-                  </tr>
-                  <tr>
-                    <td>7Days</td>
-                    <td>¥98,000</td>
-                    <td>¥75,000</td>
-                  </tr>
-                  <tr>
-                    <td>8Days</td>
-                    <td>¥113,000</td>
-                    <td>¥85,000</td>
-                  </tr>
-                  <tr>
-                    <td>9Days</td>
-                    <td>¥128,000</td>
-                    <td>¥95,000</td>
-                  </tr>
-                  <tr>
-                    <td>10Days</td>
-                    <td>¥143,000</td>
-                    <td>¥105,000</td>
-                  </tr>
-                </table>
-              </div>
+      <section>
+        <h3>Price</h3>
+        <div class="simulation-wrapper">
+          <h5>Price Simulation</h5>
+          <form id="simulation">
+            <div class="simulation-item">
+              <label for="members">passengers</label>
+              <select name="members" id="members">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
             </div>
-          </div>
+
+            <div class="simulation-item">
+              <label for="start_date">loan date</label>
+              <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                min="2024-12-20"
+                max="2025-03-31"
+              />
+            </div>
+
+            <div class="simulation-item">
+              <label for="end_date">return date</label>
+              <input
+                type="date"
+                id="end_date"
+                name="end_date"
+                min="2024-12-20"
+                max="2025-03-31"
+              />
+            </div>
+            <p id="simulation_price"></p>
+            <div>
+              <p id="simulation_msg"></p>
+            </div>
+          </form>
         </div>
       </section>
       <section>
@@ -564,48 +529,7 @@
           <a href="#reservation">BOOK NOW</a>
         </div>
       </section>
-      <div class="simulation-wrapper">
-        <h5>Price Simulation</h5>
-        <form id="simulation">
-          <div class="simulation-item">
-            <label for="members">7 years and older</label>
-            <select name="members" id="members">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
 
-          <div class="simulation-item">
-            <label for="members">6 years and younger</label>
-            <select name="young_members" id="young_members">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-
-          <div class="simulation-item">
-            <label for="start_date">start_Date</label>
-            <input type="date" id="start_date" name="start_date" />
-          </div>
-
-          <div class="simulation-item">
-            <label for="end_date">end_date</label>
-            <input type="date" id="end_date" name="end_date" />
-          </div>
-          <p id="simulation_price"></p>
-          <div>
-            <p id="simulation_msg"></p>
-          </div>
-        </form>
-      </div>
       <section>
         <h3 class="my-midium">Hokkaido Powder Belt Recommendations MAP</h3>
         <iframe
@@ -1255,6 +1179,7 @@
               id="additional-drivers"
               name="additional-drivers"
               min="0"
+              value="0"
             />
           </div>
 
@@ -1293,14 +1218,45 @@
             />
           </div>
           <div class="form-item">
-            <label for="passengers">Number of passengers:</label>
-            <input
-              type="number"
-              id="passengers"
-              name="passengers"
-              min="1"
-              required
-            />
+            <label>Passengers</label>
+            <div class="passengers-wrapper">
+              <label for="passengers">Adult</label>
+              <input
+                type="number"
+                id="passengers"
+                name="passengers"
+                min="0"
+                value="0"
+                required
+              />
+              <label for="passengers">U-12</label>
+              <input
+                type="number"
+                id="passengers-u12"
+                name="passengers-u12"
+                value="0"
+                min="0"
+                required
+              />
+              <label for="passengers">U-6</label>
+              <input
+                type="number"
+                id="passengers-u6"
+                name="passengers-u6"
+                value="0"
+                min="0"
+                required
+              />
+              <label for="passengers">U-2</label>
+              <input
+                type="number"
+                id="passengers-u2"
+                name="passengers-u2"
+                value="0"
+                min="0"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-item">

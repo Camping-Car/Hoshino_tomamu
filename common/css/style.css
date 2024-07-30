@@ -352,6 +352,10 @@ form {
   justify-content: center;
   margin-bottom: 4px;
 }
+.passengers-wrapper {
+  display: flex;
+  width: 50%;
+}
 footer {
   margin-top: 26px;
 }

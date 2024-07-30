@@ -11,20 +11,38 @@ document
   .getElementById("reservation")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
-
     const form = event.target;
     const formData = new FormData(form);
 
+    // ファイルをBase64エンコード
+    const frontFile = form.querySelector("#intl-license-front").files[0];
+    const backFile = form.querySelector("#intl-license-back").files[0];
+
     try {
+      // fileToBase64関数の呼び出しとreplaceメソッドの適用
+      const frontBase64 = await fileToBase64(frontFile);
+      const frontBase64Cleaned = frontBase64.replace(
+        "data:image/png;base64,",
+        ""
+      );
+
+      const backBase64 = await fileToBase64(backFile);
+      const backBase64Cleaned = backBase64.replace(
+        "data:image/png;base64,",
+        ""
+      );
+
+      formData.set("intl-license-front", frontBase64Cleaned);
+      formData.set("intl-license-back", backBase64Cleaned);
+
+      // フォームデータの送信
       const response = await fetch("http://localhost:3001/inbound-request", {
         method: "POST",
         body: formData,
       });
-
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
       const result = await response.json();
       console.log(result);
       alert("Reservation successful!");
@@ -34,6 +52,23 @@ document
     }
   });
 
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+}
 document
   .getElementById("simulation")
   .addEventListener("change", async function (e) {
@@ -56,7 +91,7 @@ document
         return;
       }
 
-      if (date_difference <= 5) {
+      if (date_difference <= 4) {
         err_msg.innerText = "Please select a period of more than 5 days";
         return;
       }
