@@ -286,6 +286,15 @@ input[type="checkbox"]:checked ~ .answer {
   width: 50%;
 }
 
+.warning {
+  color: #8b0000;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
 form {
   width: 770px;
   margin: 0 auto;

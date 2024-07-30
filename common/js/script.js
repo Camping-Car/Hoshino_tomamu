@@ -18,24 +18,13 @@ document
     const frontFile = form.querySelector("#intl-license-front").files[0];
     const backFile = form.querySelector("#intl-license-back").files[0];
 
+    const frontBase64 = await fileToBase64(frontFile);
+    const backBase64 = await fileToBase64(backFile);
+
+    formData.set("intl-license-front", frontBase64);
+    formData.set("intl-license-back", backBase64);
+
     try {
-      // fileToBase64関数の呼び出しとreplaceメソッドの適用
-      const frontBase64 = await fileToBase64(frontFile);
-      const frontBase64Cleaned = frontBase64.replace(
-        "data:image/png;base64,",
-        ""
-      );
-
-      const backBase64 = await fileToBase64(backFile);
-      const backBase64Cleaned = backBase64.replace(
-        "data:image/png;base64,",
-        ""
-      );
-
-      formData.set("intl-license-front", frontBase64Cleaned);
-      formData.set("intl-license-back", backBase64Cleaned);
-
-      // フォームデータの送信
       const response = await fetch("http://localhost:3001/inbound-request", {
         method: "POST",
         body: formData,
@@ -51,15 +40,6 @@ document
       alert("There was a problem with your reservation.");
     }
   });
-
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-}
 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
