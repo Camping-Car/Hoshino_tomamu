@@ -304,6 +304,54 @@ form {
 .form-item textarea {
   width: 50%;
 }
+.simulation-wrapper {
+  text-align: center;
+  border-radius: 1rem;
+  padding: 12px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+#simulation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+#simulation label {
+  width: 300px;
+  display: inline-block;
+}
+#simulation select {
+  border: none;
+  width: 300px;
+  text-align: right;
+  padding-right: 12px;
+}
+
+#simulation option {
+  padding-right: 12px;
+}
+#simulation input {
+  border: none;
+  width: 300px;
+  text-align: right;
+  padding-right: 12px;
+}
+#simulation_price {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+#simulation_msg {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #ba1e40;
+}
+.simulation-item {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
 footer {
   margin-top: 26px;
 }
