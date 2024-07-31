@@ -21,17 +21,15 @@ document
     const frontBase64 = await fileToBase64(frontFile);
     const backBase64 = await fileToBase64(backFile);
 
-    formData.set("intl-license-front", frontBase64);
-    formData.set("intl-license-back", backBase64);
+    // Base64データからメタデータを削除
+    formData.set("intl-license-front", removeBase64Prefix(frontBase64));
+    formData.set("intl-license-back", removeBase64Prefix(backBase64));
 
     try {
-      const response = await fetch(
-        "http://192.168.1.149:3001/inbound-request",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("http://localhost:3001/inbound-request", {
+        method: "POST",
+        body: formData,
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -44,6 +42,44 @@ document
     }
   });
 
+document
+  .getElementById("reservation-japan")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // ファイルをBase64エンコード
+    const frontFile = form.querySelector("#intl-license-front").files[0];
+    const backFile = form.querySelector("#intl-license-back").files[0];
+
+    const frontBase64 = await fileToBase64(frontFile);
+    const backBase64 = await fileToBase64(backFile);
+
+    formData.set("intl-license-front", frontBase64);
+    formData.set("intl-license-back", backBase64);
+
+    try {
+      const response = await fetch(
+        "http://192.168.1.149:3001/inbound-request-japan",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("予約処理に失敗しました。");
+    }
+  });
+function removeBase64Prefix(base64String) {
+  return base64String.replace(/^data:image\/\w+;base64,/, "");
+}
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
