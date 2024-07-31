@@ -115,7 +115,10 @@ th {
   gap: 0px 40px;
   justify-content: space-between;
 }
-
+.column-2 > * {
+  flex: 1; /* 子要素に均等な幅を設定 */
+  max-width: 50%; /* 幅が50％を超えないように設定 */
+}
 .my-midium {
   margin: 24px 0px;
 }
@@ -368,6 +371,10 @@ form {
 footer {
   margin-top: 26px;
 }
+.swiper-button-next,
+.swiper-button-prev {
+  width: calc(var(--swiper-navigation-size) / 17 * 27);
+}
 @media screen and (max-width: 600px) {
   nav img,
   footer img {
@@ -392,8 +399,15 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  .column-2 > * {
+    flex: 1; /* 子要素に均等な幅を設定 */
+    max-width: 100%; /* 幅が50％を超えないように設定 */
+  }
   .swiper {
     width: 400px;
+  }
+  .passengers-wrapper {
+    width: 100%;
   }
 
   .info-item-wrapper {
