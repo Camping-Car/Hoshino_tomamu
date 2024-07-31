@@ -291,7 +291,6 @@ input[type="checkbox"]:checked ~ .answer {
 
 .warning {
   color: #8b0000;
-  text-align: center;
 }
 
 .text-center {
