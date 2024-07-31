@@ -456,6 +456,60 @@
         </div>
       </section>
       <section>
+        <h3>Price</h3>
+        <div class="simulation-wrapper">
+          <h5>料金シュミレーション</h5>
+          <form id="simulation">
+            <div class="simulation-item">
+              <label for="members">乗客</label>
+              <select name="members" id="members">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+
+            <div class="simulation-item">
+              <label for="start_date">貸出日</label>
+              <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                min="2024-12-20"
+                max="2025-03-31"
+              />
+            </div>
+
+            <div class="simulation-item">
+              <label for="end_date">返却日</label>
+              <input
+                type="date"
+                id="end_date"
+                name="end_date"
+                min="2024-12-20"
+                max="2025-03-31"
+              />
+            </div>
+            <p id="simulation_price"></p>
+            <div>
+              <p id="simulation_msg"></p>
+            </div>
+          </form>
+
+          <div>
+            <p>キャンピングカーレンタル料</p>
+            <p>＋北海道パウダーベルトチケット人数分</p>
+            <p>
+              ＋星野リゾート施設利用（ホテル客室はついていません）がセット内容
+            </p>
+            <p>こちらは料金試算表です。</p>
+            <p>予約方法とは異なります。</p>
+          </div>
+        </div>
+      </section>
+      <section>
         <h3>キャンピングカー一覧</h3>
         <p>
           キャンピングカーは以下のタイプのいずれかから選ばれます。
@@ -1205,15 +1259,8 @@
       <img src="./common/images/hoshino_logo.webp" />
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".swiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+
+    <script type="module" src="./common/js/script.js"></script>
   </body>
 </html>
