@@ -26,10 +26,13 @@ if (reservationElement) {
     formData.set("intl-license-back", removeBase64Prefix(backBase64));
 
     try {
-      const response = await fetch("http://localhost:3001/inbound-request", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://japan-crc.com/api-go/inbound-request",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -62,7 +65,7 @@ if (reservationJapanElement) {
 
     try {
       const response = await fetch(
-        "http://192.168.1.149:3001/inbound-request-japan",
+        "https://japan-crc.com/api-go/inbound-request-japan",
         {
           method: "POST",
           body: formData,
@@ -121,7 +124,7 @@ document
       const start_date_str = start_date.toISOString().split("T")[0]; // yyyy-mm-dd
       const end_date_str = end_date.toISOString().split("T")[0]; // yyyy-mm-dd
 
-      const url = `http://192.168.1.149:3001/reservation-global-plan?loan_datetime=${encodeURIComponent(
+      const url = `https://japan-crc.com/api-go/reservation-global-plan?loan_datetime=${encodeURIComponent(
         start_date_str
       )}&return_datetime=${encodeURIComponent(end_date_str)}`;
 
