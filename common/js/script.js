@@ -7,9 +7,9 @@ new Swiper(".swiper", {
   },
 });
 
-document
-  .getElementById("reservation")
-  .addEventListener("submit", async function (event) {
+const reservationElement = document.getElementById("reservation");
+if (reservationElement) {
+  reservationElement.addEventListener("submit", async function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -41,10 +41,11 @@ document
       alert("There was a problem with your reservation.");
     }
   });
+}
+const reservationJapanElement = document.getElementById("reservation-japan");
 
-document
-  .getElementById("reservation-japan")
-  .addEventListener("submit", async function (event) {
+if (reservationJapanElement) {
+  reservationJapanElement.addEventListener("submit", async function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -77,6 +78,8 @@ document
       alert("予約処理に失敗しました。");
     }
   });
+}
+
 function removeBase64Prefix(base64String) {
   return base64String.replace(/^data:image\/\w+;base64,/, "");
 }

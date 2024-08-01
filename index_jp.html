@@ -1109,6 +1109,7 @@
               id="additional-drivers"
               name="additional-drivers"
               min="0"
+              value="0"
             />
           </div>
 
@@ -1147,16 +1148,46 @@
             />
           </div>
           <div class="form-item">
-            <label for="passengers">乗客数:</label>
-            <input
-              type="number"
-              id="passengers"
-              name="passengers"
-              min="1"
-              required
-            />
+            <label>Passengers</label>
+            <div class="passengers-wrapper">
+              <label for="passengers">大人</label>
+              <input
+                type="number"
+                id="passengers"
+                name="passengers"
+                min="0"
+                value="0"
+                required
+              />
+              <label for="passengers">12歳以下</label>
+              <input
+                type="number"
+                id="passengers-u12"
+                name="passengers-u12"
+                value="0"
+                min="0"
+                required
+              />
+              <label for="passengers">6歳以下</label>
+              <input
+                type="number"
+                id="passengers-u6"
+                name="passengers-u6"
+                value="0"
+                min="0"
+                required
+              />
+              <label for="passengers">2歳以下 </label>
+              <input
+                type="number"
+                id="passengers-u2"
+                name="passengers-u2"
+                value="0"
+                min="0"
+                required
+              />
+            </div>
           </div>
-
           <div class="form-item">
             <label for="area">使用地域:</label>
             <input type="text" id="area" name="area" required />
