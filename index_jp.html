@@ -1062,13 +1062,26 @@
             <label for="birthday">誕生日:</label>
             <input type="date" id="birthday" name="birthday" required />
           </div>
+          <div class="form-item">
+            <label for="loan-date">貸出日:</label>
+            <input
+              type="date"
+              id="loan-date"
+              name="loan-date"
+              min="2024-12-20"
+              max="2025-03-31"
+              required
+            />
+          </div>
 
           <div class="form-item">
-            <label for="license-country">運転免許証発行国:</label>
+            <label for="return-date">返却日:</label>
             <input
-              type="text"
-              id="license-country"
-              name="license-country"
+              type="date"
+              id="return-date"
+              name="return-date"
+              min="2024-12-20"
+              max="2025-03-31"
               required
             />
           </div>
@@ -1094,18 +1107,6 @@
               required
             />
           </div>
-
-          <div class="form-item">
-            <label for="japanese-translation">公式日本語訳:</label>
-            <input
-              type="file"
-              id="japanese-translation"
-              name="japanese-translation"
-              accept=".pdf,.doc,.docx"
-              required
-            />
-          </div>
-
           <div class="form-item">
             <label for="additional-drivers">追加のドライバー:</label>
             <input
@@ -1119,37 +1120,22 @@
 
           <div class="form-item">
             <label for="arrival-date">フライトの到着日:</label>
-            <input type="date" id="arrival-date" name="arrival-date" required />
+            <input type="date" id="arrival-date" name="arrival-date" />
           </div>
 
           <div class="form-item">
             <label for="arrival-flight">便名（到着）:</label>
-            <input
-              type="text"
-              id="arrival-flight"
-              name="arrival-flight"
-              required
-            />
+            <input type="text" id="arrival-flight" name="arrival-flight" />
           </div>
 
           <div class="form-item">
             <label for="departure-date">航空券の出発日:</label>
-            <input
-              type="date"
-              id="departure-date"
-              name="departure-date"
-              required
-            />
+            <input type="date" id="departure-date" name="departure-date" />
           </div>
 
           <div class="form-item">
             <label for="departure-flight">便名（出発）:</label>
-            <input
-              type="text"
-              id="departure-flight"
-              name="departure-flight"
-              required
-            />
+            <input type="text" id="departure-flight" name="departure-flight" />
           </div>
           <div class="form-item">
             <label>Passengers</label>
@@ -1196,12 +1182,6 @@
             <label for="area">使用地域:</label>
             <input type="text" id="area" name="area" required />
           </div>
-
-          <div class="form-item">
-            <label for="coupon">クーポン:</label>
-            <input type="text" id="coupon" name="coupon" />
-          </div>
-
           <div class="form-item">
             <label for="notes">ノート:</label>
             <textarea id="notes" name="notes" rows="4"></textarea>
