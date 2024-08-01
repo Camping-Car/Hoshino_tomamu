@@ -6,14 +6,41 @@ new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+function validateDateTime(tag_id) {
+  const input = document.getElementById(tag_id);
+  const selectedDate = new Date(input.value);
+  const startTime = new Date(selectedDate);
+  const endTime = new Date(selectedDate);
+
+  startTime.setHours(9, 30, 0, 0);
+  endTime.setHours(18, 0, 0, 0);
+
+  if (selectedDate < startTime || selectedDate > endTime) {
+    alert(
+      "選択された時間は、9:30から18:00の間にしてください。\n" +
+        "Please select a time between 9:30 AM and 6:00 PM."
+    );
+    input.value = "";
+    return false;
+  }
+
+  return true;
+}
 
 const reservationElement = document.getElementById("reservation");
 if (reservationElement) {
+  reservationElement.addEventListener("change", async function (event) {
+    if (!validateDateTime("loan-date")) return;
+    if (!validateDateTime("return-date")) return;
+  });
+
   reservationElement.addEventListener("submit", async function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
 
+    if (!validateDateTime("loan-date")) return;
+    if (!validateDateTime("return-date")) return;
     // ファイルをBase64エンコード
     const frontFile = form.querySelector("#intl-license-front").files[0];
     const backFile = form.querySelector("#intl-license-back").files[0];
@@ -49,11 +76,17 @@ if (reservationElement) {
 const reservationJapanElement = document.getElementById("reservation-japan");
 
 if (reservationJapanElement) {
+  reservationJapanElement.addEventListener("change", async function (event) {
+    if (!validateDateTime("loan-date")) return;
+    if (!validateDateTime("return-date")) return;
+  });
   reservationJapanElement.addEventListener("submit", async function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
 
+    if (!validateDateTime("loan-date")) return;
+    if (!validateDateTime("return-date")) return;
     // ファイルをBase64エンコード
     const frontFile = form.querySelector("#intl-license-front").files[0];
     const backFile = form.querySelector("#intl-license-back").files[0];
