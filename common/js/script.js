@@ -38,6 +38,8 @@ if (reservationElement) {
       const result = await response.json();
       console.log(result);
       alert("Reservation successful!");
+
+      location.reload();
     } catch (error) {
       console.error("Error:", error);
       alert("There was a problem with your reservation.");
@@ -75,6 +77,9 @@ if (reservationJapanElement) {
       }
       const result = await response.json();
       console.log(result);
+
+      alert("予約リクエストが完了しました。");
+      location.reload();
     } catch (error) {
       console.error("Error:", error);
       alert("予約処理に失敗しました。");
