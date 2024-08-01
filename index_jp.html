@@ -1044,26 +1044,27 @@
 
         <form id="reservation-japan">
           <div class="form-item">
-            <label for="name">名前:</label>
+            <label for="name">名前: (※)</label>
             <input type="text" id="name" name="name" required />
           </div>
 
           <div class="form-item">
-            <label for="email">メールアドレス:</label>
+            <label for="email">メールアドレス: (※)</label>
             <input type="email" id="email" name="email" required />
           </div>
 
           <div class="form-item">
-            <label for="address">住所:</label>
+            <label for="address">住所: (※)</label>
             <input type="text" id="address" name="address" required />
           </div>
 
           <div class="form-item">
-            <label for="birthday">誕生日:</label>
+            <label for="birthday">誕生日: (※)</label>
             <input type="date" id="birthday" name="birthday" required />
           </div>
+
           <div class="form-item">
-            <label for="loan-date">貸出日:</label>
+            <label for="loan-date">貸出日: (※)</label>
             <input
               type="datetime-local"
               id="loan-date"
@@ -1075,7 +1076,7 @@
           </div>
 
           <div class="form-item">
-            <label for="return-date">返却日:</label>
+            <label for="return-date">返却日: (※)</label>
             <input
               type="datetime-local"
               id="return-date"
@@ -1087,7 +1088,7 @@
           </div>
 
           <div class="form-item">
-            <label for="intl-license-front">免許証(表面):</label>
+            <label for="intl-license-front">免許証(表面): (※)</label>
             <input
               type="file"
               id="intl-license-front"
@@ -1098,7 +1099,7 @@
           </div>
 
           <div class="form-item">
-            <label for="intl-license-back">免許証(裏面):</label>
+            <label for="intl-license-back">免許証(裏面): (※)</label>
             <input
               type="file"
               id="intl-license-back"
@@ -1107,6 +1108,7 @@
               required
             />
           </div>
+
           <div class="form-item">
             <label for="additional-drivers">追加のドライバー:</label>
             <input
@@ -1137,10 +1139,11 @@
             <label for="departure-flight">便名（出発）:</label>
             <input type="text" id="departure-flight" name="departure-flight" />
           </div>
+
           <div class="form-item">
-            <label>Passengers</label>
+            <label>乗客(※)</label>
             <div class="passengers-wrapper">
-              <label for="passengers">大人</label>
+              <label for="passengers">大人: </label>
               <input
                 type="number"
                 id="passengers"
@@ -1149,7 +1152,7 @@
                 value="0"
                 required
               />
-              <label for="passengers">12歳以下</label>
+              <label for="passengers">12歳以下: </label>
               <input
                 type="number"
                 id="passengers-u12"
@@ -1158,7 +1161,7 @@
                 min="0"
                 required
               />
-              <label for="passengers">6歳以下</label>
+              <label for="passengers">6歳以下: </label>
               <input
                 type="number"
                 id="passengers-u6"
@@ -1167,7 +1170,7 @@
                 min="0"
                 required
               />
-              <label for="passengers">2歳以下 </label>
+              <label for="passengers">2歳以下: </label>
               <input
                 type="number"
                 id="passengers-u2"
@@ -1178,14 +1181,17 @@
               />
             </div>
           </div>
+
           <div class="form-item">
-            <label for="area">使用地域:</label>
-            <input type="text" id="area" name="area" required />
+            <label for="area">使用地域: </label>
+            <input type="text" id="area" name="area" />
           </div>
+
           <div class="form-item">
             <label for="notes">ノート:</label>
             <textarea id="notes" name="notes" rows="4"></textarea>
           </div>
+
           <div class="reservation-btn my-midium">
             <button type="submit">予約申し込みする</button>
           </div>
