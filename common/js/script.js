@@ -21,7 +21,6 @@ if (reservationElement) {
     const frontBase64 = await fileToBase64(frontFile);
     const backBase64 = await fileToBase64(backFile);
 
-    // Base64データからメタデータを削除
     formData.set("intl-license-front", removeBase64Prefix(frontBase64));
     formData.set("intl-license-back", removeBase64Prefix(backBase64));
 
