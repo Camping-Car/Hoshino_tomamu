@@ -131,9 +131,10 @@ function fileToBase64(file) {
     reader.onerror = (error) => reject(error);
   });
 }
-document
-  .getElementById("simulation")
-  .addEventListener("change", async function (e) {
+
+const simulation = document.getElementById("simulation");
+if (simulation) {
+  simulation.addEventListener("change", async function (e) {
     e.preventDefault();
 
     document.getElementById("simulation_price").innerHTML = "";
@@ -184,3 +185,58 @@ document
       err_msg.innerText = "An error occurred while calculating the simulation.";
     }
   });
+}
+
+const simulation_jp = document.getElementById("simulation_jp");
+if (simulation_jp) {
+  simulation_jp.addEventListener("change", async function (e) {
+    e.preventDefault();
+
+    document.getElementById("simulation_price").innerHTML = "";
+    const err_msg = document.getElementById("simulation_msg");
+
+    const formData = new FormData(simulation_jp);
+
+    try {
+      const start_date = new Date(formData.get("start_date"));
+      const end_date = new Date(formData.get("end_date"));
+      const members = parseInt(formData.get("members"), 10);
+      const date_difference = (end_date - start_date) / (1000 * 60 * 60 * 24);
+
+      if (isNaN(start_date.getTime()) || isNaN(end_date.getTime())) {
+        err_msg.innerText = "日付を選択してください";
+        return;
+      }
+
+      if (date_difference <= 3) {
+        err_msg.innerText = "5日間以上の期間を選択してくだい";
+        return;
+      }
+
+      const start_date_str = start_date.toISOString().split("T")[0]; // yyyy-mm-dd
+      const end_date_str = end_date.toISOString().split("T")[0]; // yyyy-mm-dd
+
+      const url = `https://japan-crc.com/api-go/reservation-global-plan?loan_datetime=${encodeURIComponent(
+        start_date_str
+      )}&return_datetime=${encodeURIComponent(end_date_str)}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      const total_plan_price = result.reduce((total, item) => {
+        return total + parseInt(item.plan_price, 10);
+      }, 0);
+
+      const facility_fee = members * 45300;
+
+      const total_price = total_plan_price + facility_fee;
+
+      document.getElementById("simulation_price").innerHTML =
+        "¥" + total_price.toLocaleString();
+      err_msg.innerText = ""; // エラーメッセージをクリア
+    } catch (error) {
+      console.error("Error:", error);
+      err_msg.innerText = "An error occurred while calculating the simulation.";
+    }
+  });
+}
